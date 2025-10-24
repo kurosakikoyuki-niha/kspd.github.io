@@ -1,0 +1,305 @@
+:root {
+  --indicator-active: #5aa9ff;
+  --career-overlay: rgba(13, 42, 77, 0.85);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* =========================== */
+/*    메인 wrapper (전체)      */
+/* =========================== */
+.main-wrapper {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+
+/* =========================== */
+/*    배경 슬라이드 스타일     */
+/* =========================== */
+.bg-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.bg-track {
+  display: flex;
+  width: 400%;
+  height: 100%;
+  transition: transform 1s ease;
+}
+
+.bg-slide {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 인디케이터 */
+.indicator-container {
+  position: absolute;
+  bottom: 105px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.indicator.active {
+  background: var(--indicator-active);
+}
+
+/* =========================== */
+/*   FOOTER BAR                */
+/* =========================== */
+.footer-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background: white;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+}
+
+.footer-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.footer-logo {
+  width: 225px;
+  height: 225px;
+  background: url('logo.png') center/contain no-repeat;
+  cursor: pointer;
+}
+
+.menu-container {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.menu-item {
+  font-size: 18px;
+  color: #222;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #5aa9ff;
+}
+
+/* ================= Popup NYPD Style ================ */
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(13, 42, 77, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  padding: 32px 40px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.35);
+  margin-bottom: 20px;
+}
+
+.popup-content {
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: rgba(255,255,255,0.9);
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 22px;
+  color: rgba(255,255,255,0.9);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 닫을 때 애니메이션 */
+.popup.hide {
+  animation: popupSlideUp 0.45s ease forwards;
+}
+
+@keyframes popupSlideUp {
+  0% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -65%); }
+}
+
+/* =========================== */
+/*      CAREER PANEL           */
+/* =========================== */
+.career-panel {
+  position: fixed;
+  top: 100vh; /* 처음에는 화면 아래 */
+  left: 0;
+  width: 100%;
+  height: 90vh;
+  background: #ffffff;
+  transition: transform 0.5s ease-in-out, top 0.5s ease-in-out;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.career-panel.active {
+  top: 5vh; /* 95vh만큼 올라와서 5vh만 위에 남김 */
+}
+
+.career-inner {
+  width: 100%;
+  height: 100%;
+  padding: 20px 60px 30px 60px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.career-title-main {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.career-desc {
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  flex: 1;
+}
+
+.career-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+}
+
+.career-img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+}
+
+.career-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.career-card-title {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+/* Hover 효과 */
+.career-card:hover .career-img img {
+  transform: scale(1.05);
+}
+
+.career-card:hover .career-card-title {
+  background: var(--career-overlay);
+  color: #fff;
+}
+
+.career-footer {
+  text-align: right;
+  font-size: 12px;
+  color: #666;
+  margin-top: 20px;
+}
+
+/* ===================== */
+/* Career Panel Scrollbar */
+/* ===================== */
+.career-inner::-webkit-scrollbar {
+  width: 6px;                   /* 얇게 */
+}
+
+.career-inner::-webkit-scrollbar-track {
+  background: transparent;      /* 배경 투명 */
+}
+
+.career-inner::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.career-inner:hover::-webkit-scrollbar-thumb {
+  background: rgba(90, 169, 255, 0.7);  /* hover시 테마컬러 */
+}
+

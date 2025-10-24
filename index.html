@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valkyrie Police Academy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 기존 전체 UI를 감싸는 wrapper -->
+  <div class="main-wrapper">
+
+    <!-- 배경 슬라이더 -->
+    <div class="bg-slider">
+      <div class="bg-track">
+        <div class="bg-slide" style="background-image:url('bg/bg1.png')"></div>
+        <div class="bg-slide" style="background-image:url('bg/bg2.png')"></div>
+        <div class="bg-slide" style="background-image:url('bg/bg3.png')"></div>
+        <div class="bg-slide" style="background-image:url('bg/bg4.png')"></div>
+      </div>
+
+      <!-- 인디케이터 -->
+      <div class="indicator-container">
+        <div class="indicator"></div>
+        <div class="indicator"></div>
+        <div class="indicator"></div>
+        <div class="indicator"></div>
+      </div>
+    </div>
+
+    <!-- 중앙 팝업 -->
+    <div class="popup" id="mainPopup">
+      <div class="close-btn" onclick="closePopup()">✕</div>
+      <h1>Welcome to the K.S.P.D Website!</h1>
+      <div class="divider"></div>
+      <div class="popup-content">
+        This website is not an official service.<br>
+        The K.S.P.D is a fictional organization featured in the game ‘Blue Archive,’<br>
+        and has no connection to any real-world law enforcement agency.<br>
+      </div>
+    </div>
+
+    <!-- 하단 바 -->
+    <div class="footer-bar">
+      <div class="footer-content">
+        <!-- 왼쪽 로고 (이걸 눌러도 패널 닫힘) -->
+        <div class="footer-logo" id="homeLogo"></div>
+
+        <!-- 오른쪽 메뉴 -->
+        <div class="menu-container">
+          <div class="menu-item" data-menu="academy">Academy Info</div>
+          <div class="menu-item" data-menu="career">Career</div>
+          <div class="menu-item" data-menu="org">Organization</div>
+          <div class="menu-item" data-menu="notice">Notice</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Career 패널 (아래에서 슬라이드) -->
+  <div class="career-panel" id="careerPanel">
+    <div class="career-inner">
+      <h2 class="career-title-main">CAREERS</h2>
+      <p class="career-desc">/* 설명문은 나중에 네가 직접 입력 */</p>
+
+      <div class="career-grid">
+        <div class="career-card">
+          <div class="career-img"><img src="career/career1.png"></div>
+          <div class="career-card-title">PUBLIC SECURITY BUREAU</div>
+        </div>
+        <div class="career-card">
+          <div class="career-img"><img src="career/career2.png"></div>
+          <div class="career-card-title">COMMUNITY SAFETY BUREAU</div>
+        </div>
+        <div class="career-card">
+          <div class="career-img"><img src="career/career3.png"></div>
+          <div class="career-card-title">COAST GUART</div>
+        </div>
+        <div class="career-card">
+          <div class="career-img"><img src="career/career4.png"></div>
+          <div class="career-card-title">SECURITY BUREAU</div>
+        </div>
+      </div>
+
+      <div class="career-footer">© 2025 Valkyrie Police Academy</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function closePopup() {
+      const popup = document.getElementById('mainPopup');
+      popup.classList.add('hide');
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 600);
+    }
+  </script>
+</body>
+</html>
