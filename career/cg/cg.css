@@ -91,7 +91,7 @@ body {
 /* =========================
    CONTENT AREA
    ========================= */
-.psb-content {
+.content {
   max-width: 1100px;
   margin: 60px auto;
   padding: 0 20px;
@@ -182,4 +182,31 @@ body {
   height: 1px;
   background: rgba(0,0,0,0.1);
   margin: 20px 0;
+}
+
+/* ============ PSB Scrollbar (career 스타일 통일) ============ */
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ontent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.content:hover::-webkit-scrollbar-thumb {
+  background: rgba(90, 169, 255, 0.7);
+}
+
+html, body {
+  overflow: hidden;
+}
+
+.content {
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
 }
